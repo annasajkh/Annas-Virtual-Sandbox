@@ -57,13 +57,5 @@ public class Line extends GameObject
     {
         Core.shapeRenderer.setColor(Color.WHITE);
         Core.shapeRenderer.rectLine(point1.x, point1.y, point2.x, point2.y, Core.player.camera.zoom + 1);
-        
-//        shapeRenderer.setColor(Color.RED);
-//        shapeRenderer.circle(position.x, position.y, 2);
-//        
-//        Vector2 normalScaled = normal.cpy().scl(20);
-//
-//        shapeRenderer.setColor(Color.BLUE);
-//        shapeRenderer.rectLine(position.x, position.y, position.x + normalScaled.x, position.y + normalScaled.y, 5);
     }
 }

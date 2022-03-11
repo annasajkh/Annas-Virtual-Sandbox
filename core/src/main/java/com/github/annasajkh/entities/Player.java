@@ -37,23 +37,21 @@ public class Player extends Entity
     
     public void movePlayerCamera()
     {
-//        //smooth camera movement
-//        if(!camera.position.epsilonEquals(position.x, position.y, 0))
-//        {   
-//            float dirX = position.x - camera.position.x;
-//            float dirY = position.y - camera.position.y;
-//            
-//            float length = Vector2.len(dirX, dirY);
-//            
-//            dirX /= length;
-//            dirY /= length;
-//            
-//            camera.position.x += dirX * length * Core.cameraSmoothFactor;
-//            camera.position.y += dirY * length * Core.cameraSmoothFactor;
-//        }
-        
-        camera.position.x = position.x;
-        camera.position.y = position.y;
+        //smooth camera movement
+        if(!camera.position.epsilonEquals(position.x, position.y, 0))
+        {   
+            float dirX = position.x - camera.position.x;
+            float dirY = position.y - camera.position.y;
+            
+            float length = Vector2.len(dirX, dirY);
+            
+            dirX /= length;
+            dirY /= length;
+            
+            camera.position.x += dirX * length * Core.cameraSmoothFactor;
+            camera.position.y += dirY * length * Core.cameraSmoothFactor;
+        }
+
         camera.update();
     }
 

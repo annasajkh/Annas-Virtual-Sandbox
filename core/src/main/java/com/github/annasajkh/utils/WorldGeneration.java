@@ -223,27 +223,6 @@ public class WorldGeneration extends Thread
         
         floodedVectors.clear();
         
-//        for(Chunk chunk : chunks.values())
-//        {
-//            for(int i = 0; i < chunk.marchingObjects.length - 1; i++)
-//            {
-//                for(int j = 0; j < chunk.marchingObjects[0].length - 1; j++)
-//                {
-//                    MarchingObject stateA = chunk.marchingObjects[i][j];
-//                    MarchingObject stateB = chunk.marchingObjects[i][j + 1];
-//                    MarchingObject stateC = chunk.marchingObjects[i + 1][j + 1];
-//                    MarchingObject stateD = chunk.marchingObjects[i + 1][j];
-//                    
-//                    int state = getState(stateA.getValue(), 
-//                                         stateB.getValue(),
-//                                         stateC.getValue(), 
-//                                         stateD.getValue());
-//                    
-//                    chunk.marchingObjects[i][j].updateStatus(state);
-//                }
-//            }
-//        }
-        
         return chunks;
     }
     
@@ -291,5 +270,7 @@ public class WorldGeneration extends Thread
                 Core.generateChunk = false;
             }
         }
+        
+        System.exit(0);
     }
 }
