@@ -6,11 +6,9 @@ public class Chunk extends GameObject
 {
     public MarchingObject[][] marchingObjects;
     
-    
     public Chunk(Vector2 position, MarchingObject[][] marchingObjects)
     {
         super(position);
-        
         this.marchingObjects = marchingObjects;
     }
 

@@ -113,7 +113,7 @@ public class Core extends ApplicationAdapter
 	    
 	    
 	    ScreenUtils.clear(0, 0, 0, 1);
-
+	    System.out.println(Gdx.graphics.getFramesPerSecond());
 	    shapeRenderer.begin(ShapeType.Filled);
 	    synchronized(chunks)
         {

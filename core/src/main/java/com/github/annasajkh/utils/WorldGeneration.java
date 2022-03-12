@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.ObjectMap.Entry;
 import com.github.annasajkh.Core;
 import com.github.annasajkh.objects.Chunk;
 import com.github.annasajkh.objects.MarchingObject;
-import com.github.annasajkh.shapes.Line;
+import com.github.annasajkh.shapes.Triangle;
 
 public class WorldGeneration extends Thread
 {
@@ -64,15 +64,6 @@ public class WorldGeneration extends Thread
                                      stateB.getValue(),
                                      stateC.getValue(), 
                                      stateD.getValue());
-                
-
-                /*
-                SD      SC
-                |---a---|
-                d       b
-                |---c---|
-                SA      SB
-                */
 
                 Vector2 a = new Vector2(xLocal + Core.squareResolution / 2, yLocal + Core.squareResolution);
                 Vector2 b = new Vector2(xLocal + Core.squareResolution, yLocal + Core.squareResolution / 2);
@@ -82,50 +73,194 @@ public class WorldGeneration extends Thread
                 switch (state)
                 {
                     case 1:
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(c, d, stateA.getPosition(), null));
+                        break;
+                        
                     case 14:
-                        marchingObjects[i][j].lines.add(new Line(c, d, marchingObjects[i][j].getPosition()));
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(c, stateC.getPosition(), stateB.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(c, d, stateC.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(d, stateC.getPosition(), stateD.getPosition(), null));
                         break;
 
                     case 2:
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(b, c, stateB.getPosition(), null));
+                        break;
+                        
                     case 13:
-                        marchingObjects[i][j].lines.add(new Line(b, c, marchingObjects[i][j].getPosition()));
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(b, stateC.getPosition(), stateD.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(c, b, stateD.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(c, stateA.getPosition(), stateD.getPosition(), null));
                         break;
 
                     case 3:
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(d, stateA.getPosition(), stateB.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(d, b, stateB.getPosition(), null));
+                        break;
+                        
                     case 12:
-                        marchingObjects[i][j].lines.add(new Line(b, d, marchingObjects[i][j].getPosition()));
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(b, stateC.getPosition(), stateD.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(d, b, stateD.getPosition(), null));
                         break;
 
                     case 4:
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(a, b, stateC.getPosition(), null));
+                        break;
+                        
                     case 11:
-                        marchingObjects[i][j].lines.add(new Line(a, b, marchingObjects[i][j].getPosition()));
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(a, stateA.getPosition(), stateD.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(a, b, stateA.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(b, stateA.getPosition(), stateB.getPosition(), null));
                         break;
 
                     case 5:
-                        marchingObjects[i][j].lines.add(new Line(a, d, marchingObjects[i][j].getPosition()));
-                        marchingObjects[i][j].lines.add(new Line(c, b, marchingObjects[i][j].getPosition()));
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(d, c, stateA.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(d, c, a, null));
+                        marchingObjects[i][j].triangles.add(new Triangle(a, b, c, null));
+                        marchingObjects[i][j].triangles.add(new Triangle(a, b, stateC.getPosition(), null));
                         break;
 
                     case 6:
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(a, stateC.getPosition(), stateB.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(a, c, stateB.getPosition(), null));
+                        break;
+                        
                     case 9:
-                        marchingObjects[i][j].lines.add(new Line(a, c, marchingObjects[i][j].getPosition()));
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(c, stateA.getPosition(), stateD.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(a, c, stateD.getPosition(), null));
                         break;
 
                     case 7:
-                    case 8:            
-                        marchingObjects[i][j].lines.add(new Line(a, d, marchingObjects[i][j].getPosition()));
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(d, stateA.getPosition(), stateB.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(a, d, stateB.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(a, stateC.getPosition(), stateB.getPosition(), null));
+                        break;
+                        
+                    case 8:
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(a, d, stateD.getPosition(), null));
                         break;
 
                     case 10:
-                        marchingObjects[i][j].lines.add(new Line(a, b, marchingObjects[i][j].getPosition()));
-                        marchingObjects[i][j].lines.add(new Line(c, d, marchingObjects[i][j].getPosition()));
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(a, d, stateD.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(d, c, a, null));
+                        marchingObjects[i][j].triangles.add(new Triangle(a, b, c, null));
+                        marchingObjects[i][j].triangles.add(new Triangle(c, b, stateB.getPosition(), null));
+                        break;
+                     
+                    case 15:
+                        /*
+                        SD      SC
+                        |---a---|
+                        d       b
+                        |---c---|
+                        SA      SB
+                        */
+                        marchingObjects[i][j].triangles.add(new Triangle(stateA.getPosition(), 
+                                                                         stateD.getPosition(),
+                                                                         stateC.getPosition(), null));
+                        marchingObjects[i][j].triangles.add(new Triangle(stateA.getPosition(), 
+                                                                         stateB.getPosition(),
+                                                                         stateC.getPosition(), null));
                         break;
                 }
             }
-            
-            
-            
-
         }
         
         return marchingObjects;

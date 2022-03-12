@@ -2,6 +2,7 @@ package com.github.annasajkh.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.github.annasajkh.Core;
@@ -33,6 +34,7 @@ public class Player extends Entity
         Core.chunks.putAll(WorldGeneration.generateChunks(camera.position.x, camera.position.y));
         System.out.println("generate");
         System.out.println(Core.chunks.size);
+        color = Color.BLUE;
     }
     
     public void movePlayerCamera()

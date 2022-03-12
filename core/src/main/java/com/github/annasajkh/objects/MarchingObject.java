@@ -4,20 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.math.Vector2;
-import com.github.annasajkh.Core;
-import com.github.annasajkh.shapes.Line;
+import com.github.annasajkh.shapes.Triangle;
 
 public class MarchingObject extends GameObject
 {
     protected float value;
-    public List<Line> lines;
-    public boolean renderRect = false;
+    public List<Triangle> triangles;
     
     public MarchingObject(Vector2 position, float value)
     {
         super(position);
         this.value = value;
-        lines =  new ArrayList<>();
+        triangles =  new ArrayList<>();
         
     }
     
@@ -30,9 +28,9 @@ public class MarchingObject extends GameObject
     @Override
     public void draw()
     {
-        for(Line line : lines)
+        for(Triangle triangle : triangles)
         {
-            line.draw();
+            triangle.draw();
         }
     }
     
